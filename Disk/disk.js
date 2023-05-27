@@ -1,4 +1,4 @@
-var pre,v1,v2,v3,v4,v5,v6,dir;
+var pre,v1,v2,v3,v4,v5,v6,v7,v8,dir;
                 function getBitStreamAndPlot(event, r1, ini, final, alg, side){
                         var inp=[],r2=r1.split(" "),r3;
                         for(a1=0;a1<r2.length;++a1){
@@ -37,9 +37,134 @@ var pre,v1,v2,v3,v4,v5,v6,dir;
                         if(alg=="clook"){
                                 clook(inp, ini, final);
                         }
-
+                        if(alg=="RSS"){
+                                random(inp, ini, final);
+                        }
+                        if(alg=="LIFO"){
+                                lifo(inp, ini, final);
+                        }
                 }
-
+                function lifo(inp, ini, final) {
+                        var x1 = [];
+                        var y1 = [];
+                        var seek = 0;
+                        x1.push(ini);
+                        y1.push(0);
+                        var a1;
+                        inp.reverse();
+                        for (a1 = 1; a1 <= inp.length; ++a1) {
+                          x1.push(inp[a1 - 1]);
+                          y1.push(-1 * a1);
+                          if (a1 == 1) {
+                            seek = seek + Math.abs(ini - inp[a1 - 1]);
+                          } else {
+                            seek = seek + Math.abs(inp[a1 - 2] - inp[a1 - 1]);
+                          }
+                        }
+                      
+                        var layout = {
+                          // title: 'LIFO Disk Scheduling',
+                          xaxis: {
+                            autorange: true,
+                            showgrid: true,
+                            zeroline: false,
+                            showline: true,
+                            autotick: true,
+                            ticks: '',
+                            showticklabels: true,
+                            title: 'Cylinder Number'
+                          },
+                          yaxis: {
+                            autorange: true,
+                            showgrid: false,
+                            zeroline: false,
+                            showline: false,
+                            autotick: true,
+                            ticks: '',
+                            showticklabels: false
+                          }
+                        };
+                      
+                        var trace1 = {
+                          x: x1,
+                          y: y1,
+                          type: 'scatter'
+                        };
+                      
+                        var data = [trace1];
+                        v8 = seek;
+                      
+                        if (pre) {
+                          Plotly.newPlot('graph_area', data, layout);
+                          document.getElementById("alg_seek").innerHTML = "Seek: " + seek;
+                          document.getElementById("alg_name").innerHTML = "LIFO";
+                        }
+                      }
+                      
+                function shuffleArray(array) {
+                        for (let i = array.length - 1; i > 0; i--) {
+                          const j = Math.floor(Math.random() * (i + 1));
+                          [array[i], array[j]] = [array[j], array[i]];
+                        }
+                        return array;
+                      }
+                function random(inp, ini, final) {
+                        var x1 = [];
+                        var y1 = [];
+                        var seek = 0;
+                        x1.push(ini);
+                        y1.push(0);
+                        var a1;
+                        inp = shuffleArray(inp)
+                        for (a1 = 1; a1 <= inp.length; ++a1) {
+                          x1.push(inp[a1 - 1]);
+                          y1.push(-1 * a1);
+                          if (a1 == 1) {
+                            seek = seek + Math.abs(ini - inp[a1 - 1]);
+                          } else {
+                            seek = seek + Math.abs(inp[a1 - 2] - inp[a1 - 1]);
+                          }
+                        }
+                      
+                        var layout = {
+                          // title: 'Random Disk Scheduling',
+                          xaxis: {
+                            autorange: true,
+                            showgrid: true,
+                            zeroline: false,
+                            showline: true,
+                            autotick: true,
+                            ticks: '',
+                            showticklabels: true,
+                            title: 'Cylinder Number'
+                          },
+                          yaxis: {
+                            autorange: true,
+                            showgrid: false,
+                            zeroline: false,
+                            showline: false,
+                            autotick: true,
+                            ticks: '',
+                            showticklabels: false
+                          }
+                        };
+                      
+                        var trace1 = {
+                          x: x1,
+                          y: y1,
+                          type: 'scatter'
+                        };
+                      
+                        var data = [trace1];
+                        v7 = seek;
+                      
+                        if (pre) {
+                          Plotly.newPlot('graph_area', data, layout);
+                          document.getElementById("alg_seek").innerHTML = "Seek: " + seek;
+                          document.getElementById("alg_name").innerHTML = "RSS";
+                        }
+                      }
+                      
                 function fcfs(inp, ini, final){
                         var x1=[];
                         var y1=[];
