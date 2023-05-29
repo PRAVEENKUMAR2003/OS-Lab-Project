@@ -1,0 +1,392 @@
+<html><head>
+    <title>FILE ALLOCATION</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script><style id="plotly.js-style-global"></style><style id="plotly.js-style-global"></style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="disk.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+  
+  
+  
+  .column {
+  float: left;
+  padding: 15px;
+  }
+  
+  .column1 {
+  float: left;
+  width: 95wv;
+  padding: 15px;
+  margin:10px
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+  content: "";
+  display: table;
+  clear: both;
+  }
+  
+  .body_name{
+  background-color: #0f0f0f;
+  }
+  
+  
+  
+  .button {
+  background-color: #FCBA28;
+  color: #0f0d0e;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 550;
+  }
+  .button1 {
+  background-color: #0f0d0e; 
+  color: #FCBA28; 
+  border-radius: 5px;
+  border: 2px solid #FCBA28;
+  }
+  
+  .button1:hover {
+  background-color: #FCBA28;
+  color: #0f0d0e;
+  }
+  nav {
+  background-color: #0f0d0e;
+  height: 90px;
+  display:flex;
+  justify-content:space-between;
+  background: rgba(10, 4, 4, 0);
+  position:relative;
+  }
+  .logo {
+  border-radius: 12px;
+  margin: 15px;
+  margin-left: 4%;
+  padding: 18px 10px 2px 10px;
+  background: #231F20;
+  color: #f9f4da;
+  text-align: center;
+  font: 20px 'Outfit', sans-serif;
+  justify-content: center;
+  font-weight: bolder;
+  cursor: pointer;
+  
+  }
+  .logo:hover {
+  color: #FCBA28;
+  }
+  
+  ul {
+  list-style: none;
+  margin-right: 4%;
+  padding: 0;
+  display:flex;
+  justify-content:right;
+  align-items: center;
+  height: 100%;
+  }
+  
+  li {
+  margin: 0 20px;
+  
+  }
+  
+  a {
+  color: #FCBA28;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight:bold;
+  text-transform: uppercase;
+  }
+  
+  /* dropdown*/
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 135px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  background: rgba(2, 2, 0, 0.45);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.3px);
+  -webkit-backdrop-filter: blur(10.3px);
+  
+  }
+  
+  .dropdown-content a {
+  color: #FCBA28;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border: none;
+  cursor: pointer;
+  transition-duration: 0.25s;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 550;
+  font-size: small;
+  
+  }
+  
+  .dropdown-content a:hover {
+  background-color:#FCBA28;
+  color: #0f0d0e;
+  border-radius: 5px;
+  }
+  
+  .dropdown:hover .dropdown-content {
+  display: block;
+  }
+  
+  </style></head>
+  
+  <body class="body_name">
+        <!-- Navigation Bar --><nav>
+    <a class="logo" href="../index.html"> OS VISUALIZER </a>
+    <ul>
+        <li><button onclick="location.href = '../index.html';" class="button button1">Home</button></li>
+        <li class="dropdown"><button class="button button1 dropbtn">Algorithms</button>
+            <div class="dropdown-content">
+                <a href="#">Process Scheduling</a>
+                <a href="#">Process Synchronization</a>
+                <a href="../Bankers/bankers.html">Bankers Algorithm</a>
+                <a href="#">MFT and MVT</a>
+                <a href="#">Paging and Page Replacement Algorithm</a>
+                <a href="disk.html">Disk Scheduling</a>
+                <a href="#">File Allocation</a>
+                <a href="#">Miscellaneous</a>
+                </div>
+        </li>
+        <li><button class="button button1">About</button></li>
+        <li><button class="button button1">References</button></li>
+            </ul>
+            
+        
+       
+        
+  </nav>
+        
+        <div class="container-fluid">
+  
+    
+    
+  
+  
+  <div class="container-fluid">
+  <div class="row">
+        <div class="jumbotron" style="background-color:#0f0f0f">
+            <h1 style="color:#FCBA28" class="display-3" font="" color="black"><strong>Process Synchronization</strong></h1>
+            <p style="color:#FCBA28" class="lead">Process synchronisation is the coordination of the execution of many processes in a multi-process system to make sure they have controlled and predictable access to common resources. It seeks to fix the synchronisation problems in a concurrent system, including race conditions.It provides the advantages of ensuring data integrity and uniformity, avoids race conditions, prevents data from becoming inconsistent due to concurrent access, supports the wise and effective use of shared resources.</p>
+  </div>
+  <div class="column1" style="background-color:#FCBA28">
+  <h2 style="color:black">Producer-Consumer Problem</h2>
+  <p style="color:black">Producer consumer problem is a classical synchronization problem. We can solve this problem by using semaphores. 
+    A semaphore S is an integer variable that can be accessed only through two standard operations : wait() and signal(). 
+    The wait() operation reduces the value of semaphore by 1 and the signal() operation increases its value by 1. 
+  </p>
+  Solution for producer:<br>
+  do{<br>
+    //produce an item<br><br>
+
+    wait(empty);<br>
+    wait(mutex);<br><br>
+
+    //place in buffer<br><br>
+
+    signal(mutex);<br>
+    signal(full);<br><br>
+
+  }while(true)
+  </p>
+  <p>
+  Solution for consumer:<br>
+  do{<br><br>
+
+    wait(full);<br>
+    wait(mutex);<br><br>
+    
+    // consume item from buffer<br><br>
+    
+    signal(mutex);<br>
+    signal(empty);<br><br>
+    
+  }while(true)
+  </p>
+  </div>
+  <div class="column1" style="background-color:#FCBA28">
+  <h2 style="color:black">Reader-Writer Problem</h2>
+  <p style="color:black">Consider a situation where we have a file shared between many people.<br> 
+    1) One set of data is shared among a number of processes.<br>
+    2) Once a writer is ready, it performs its write. Only one writer may write at a time.<br>
+    3) If a process is writing, no other process can read it.<br>
+    4) If at least one reader is reading, no other process can write.<br>
+    5) Readers may not write and only read.<br>
+  </p>
+  <p>
+    Writer process:<br>
+    do {<br>
+        // writer requests for critical section<br>
+        wait(wrt);<br><br>
+       
+        // performs the write<br><br>
+    
+        // leaves the critical section<br>
+        signal(wrt);<br><br>
+    
+    } while(true);
+  </p>
+  <p>
+    Reader Process:<br>
+    do {<br><br>
+    
+        // Reader wants to enter the critical section<br>
+        wait(mutex);<br><br>
+     
+        // The number of readers has now increased by 1<br>
+        readcnt++;<br><br>                         
+     
+        // When there is atleast one reader in the critical section, this ensures no writer can enter if there is even one reader, thus we give preference to readers here<br>
+        if (readcnt==1)<br>     
+           wait(wrt);<br><br>                   
+     
+        // other readers can enter while this current reader is inside the critical section<br>
+        signal(mutex);<br><br>                   
+     
+        // current reader performs reading here<br>
+        wait(mutex);   // a reader wants to leave<br><br>
+     
+        readcnt--;<br><br>
+     
+        // that is, no reader is left in the critical section,<br>
+        if (readcnt == 0)<br>
+            signal(wrt);         // writers can enter<br><br>
+     
+        signal(mutex); // reader leaves<br><br>
+     
+     } while(true);
+  </p>     
+  </div>
+
+<div class="column1" style="background-color:#FCBA28">
+<h2 style="color:black">Sleeping Barber Problem</h2>
+<p style="color:black">The Sleeping Barber problem is a classic problem in process synchronization that is used to illustrate synchronization issues that can arise in a concurrent system. The problem is as follows:<br>
+
+    There is a barber shop with one barber and a number of chairs for waiting customers. Customers arrive at random times and if there is an available chair, they take a seat and wait for the barber to become available. If there are no chairs available, the customer leaves. When the barber finishes with a customer, he checks if there are any waiting customers. If there are, he begins cutting the hair of the next customer in the queue. If there are no customers waiting, he goes to sleep.
+</p>
+<p>
+    Barber Process:<br>
+        while(true) {<br>
+                /* waits for a customer (sleeps). */<br>
+                down(Customers);<br><br>
+    
+                /* mutex to protect the number of available seats.*/<br>
+                down(Seats);<br><br>
+    
+                /* a chair gets free.*/<br>
+                FreeSeats++;<br><br>
+                
+                /* bring customer for haircut.*/<br>
+                up(Barber);<br><br>
+                
+                /* release the mutex on the chair.*/<br>
+                up(Seats);<br>
+                /* barber is cutting hair.*/<br>
+        }
+</p>
+<p>
+    Customer Process:<br>
+        while(true) {<br>
+                /* protects seats so only 1 customer tries to sit<br>
+                in a chair if that's the case.*/<br>
+                down(Seats); //This line should not be here.<br>
+                if(FreeSeats > 0) {<br><br>
+                    
+                    /* sitting down.*/<br>
+                    FreeSeats--;<br><br>
+                    
+                    /* notify the barber. */<br>
+                    up(Customers);<br><br>
+                    
+                    /* release the lock */<br>
+                    up(Seats);<br><br>
+                    
+                    /* wait in the waiting room if barber is busy. */<br>
+                    down(Barber);<br>
+                    // customer is having hair cut<br>
+                }<br>
+                else {<br>
+                    /* release the lock */<br>
+                    up(Seats);<br>
+                    // customer leaves<br>
+                }<br>
+        }  
+</p>
+</div>
+  
+  <div class="pratheek">
+  <a href="p_c.html">PRODUCER-CONSUMER PROBLEM</a>
+  <br>
+  <a href="r_w.html">READER-WRITER PROBLEM</a>
+  <br>
+  <a href="s_b.html">SLEEPING BARBER PROBLEM</a>
+  
+  </div>
+  
+  
+  </div>
+  </div>
+        
+  <br>
+  <br>
+  </div>
+  <!-- Code injected by live-server -->
+  <script>
+  // <![CDATA[  <-- For SVG support
+  if ('WebSocket' in window) {
+  (function () {
+  function refreshCSS() {
+    var sheets = [].slice.call(document.getElementsByTagName("link"));
+    var head = document.getElementsByTagName("head")[0];
+    for (var i = 0; i < sheets.length; ++i) {
+      var elem = sheets[i];
+      var parent = elem.parentElement || head;
+      parent.removeChild(elem);
+      var rel = elem.rel;
+      if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+      }
+      parent.appendChild(elem);
+    }
+  }
+  var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+  var address = protocol + window.location.host + window.location.pathname + '/ws';
+  var socket = new WebSocket(address);
+  socket.onmessage = function (msg) {
+    if (msg.data == 'reload') window.location.reload();
+    else if (msg.data == 'refreshcss') refreshCSS();
+  };
+  if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+    console.log('Live reload enabled.');
+    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+  }
+  })();
+  }
+  else {
+  console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+  }
+  // ]]>
+  </script>
+  
+  
+  </body></html>
