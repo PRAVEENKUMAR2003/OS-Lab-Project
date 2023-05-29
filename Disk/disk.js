@@ -129,7 +129,7 @@ var pre,v1,v2,v3,v4,v5,v6,v7,v8,dir;
                         var layout = {
                           // title: 'Random Disk Scheduling',
                           xaxis: {
-                            autorange: true,
+                            autorange: [0,final],
                             showgrid: true,
                             zeroline: false,
                             showline: true,
