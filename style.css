@@ -18,7 +18,7 @@ body {
     margin: 4px 2px;
     cursor: pointer;
     transition-duration: 0.5s;
-    font-family: 'Outfit', sans-serif;
+    font: 15px 'Outfit', sans-serif;
     font-weight: 550;
   }
 .button1 {
@@ -130,3 +130,10 @@ a {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
