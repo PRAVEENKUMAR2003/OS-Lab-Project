@@ -566,7 +566,91 @@
     <span style="font-size: large; color: #FCBA28">Average turn around time:
       <div id="avgtat" style="color:rgb(255, 255, 255);"></div>
     </span>
+    <div  id="advdisfcfs" style="margin: 20px;border-radius: 20px; padding: 20px; background-color: whitesmoke;">
+      <h2><b>Advantages:</b></h2>    
+      <p>
+        <ul>
+          <li>Simple and easy to implement: FCFS is a straightforward scheduling algorithm where processes are executed in the order they arrive, making it easy to understand and implement.</li>
+          <li>No starvation: Since processes are executed based on arrival time, there is no prioritization, ensuring that every process gets a chance to run.</li>
+          <li>Minimal overhead: FCFS has minimal overhead in terms of context switching or maintaining scheduling data structures, making it efficient in scenarios where the context switch cost is high.</li>
+        </ul>
+      </p>
+    <br>
+    <h2><b>Disadvantages:</b></h2>    
+      <p>
+        <ul>
+          <li>Poor response time: FCFS may lead to long waiting times for processes with higher burst times, resulting in poor response time and interactive performance.</li>  
+          <li>Convoy effect: When a long-running process holds up the CPU, shorter processes have to wait, causing a convoy effect where small processes get delayed due to the presence of a single large process.</li>
+          <li>No consideration for process priority: FCFS does not consider the priority or urgency of processes, which can be a limitation in scenarios where some processes require immediate attention or have higher priority than others.</li>
+        </ul>
+      </p>
+  </div>
+  <div  id="advdisroundrobin" style="margin: 20px;border-radius: 20px; padding: 20px; background-color: whitesmoke; display: none;">
+    <h2><b>Advantages:</b></h2>    
+    <p>
+      <ul>
+      <li>Fairness: Round Robin ensures fairness by providing equal opportunities for all processes to execute. Each process receives a fixed time slice called a time quantum, preventing any single process from monopolizing the CPU.
+  
+  
+      </li>  
+      <li>Responsiveness: Round Robin provides good responsiveness for interactive applications. Since processes are executed in a cyclic manner, even if a process with a long burst time is running, other processes get a chance to execute during subsequent time slots.</li>
+      <li>Easy Implementation: Round Robin is a simple and straightforward scheduling algorithm. It is easy to implement and understand, making it widely used in many operating systems.</li>
+  
+      </ul>
+    </p>
+  <br>
+  <h2><b>Disadvantages:</b></h2>    
+    <p>
+      <ul>
+        <li>Poor Performance for Long Processes: If a process requires a significantly longer time to complete than the time quantum, Round Robin can lead to poor performance. The overhead of frequent context switching between processes can degrade overall system performance.</li>
+        <li>Inefficiency with Unequal Processes: Round Robin treats all processes equally, regardless of their priority or resource requirements. This can result in inefficiencies when there are processes with varying resource needs or different levels of importance.</li>
+        <li>Time Quantum Selection: The selection of an appropriate time quantum is challenging. A small time quantum increases responsiveness but leads to more frequent context switching, while a large time quantum reduces context switching but may impact fairness and response time for interactive processes. Choosing an optimal time quantum is crucial for efficient Round Robin scheduling.</li>
+      </ul>
+    </p>
+  </div>
+  <div  id="advdissjf" style="margin: 20px;border-radius: 20px; padding: 20px; background-color: whitesmoke; display: none;">
+    <h2><b>Advantages:</b></h2>    
+    <p>
+      <ul>
+      <li>Minimizes Waiting Time: SJF scheduling aims to minimize the average waiting time of processes by selecting the shortest job first. This approach ensures that shorter jobs are executed earlier, reducing the time other processes have to wait.</li>
+      <li>Efficient Resource Utilization: SJF scheduling tends to utilize system resources more efficiently. Since shorter jobs are given higher priority, they can be completed quickly, freeing up system resources for other processes. This can lead to improved overall system performance.</li>
+      <li>Predictable Execution Time: In SJF scheduling, the execution time of a job is known in advance since it depends on the length of the job itself. This predictability allows for better planning and scheduling decisions, making it easier to estimate completion times and meet deadlines.
 
+      </li>
+      </ul>
+    </p>
+  <br>
+  <h2><b>Disadvantages:</b></h2>    
+    <p>
+      <ul>
+        <li>Starvation of Longer Jobs: SJF scheduling prioritizes shorter jobs, which can result in longer jobs experiencing starvation. If a series of short jobs continuously arrives, longer jobs may keep waiting indefinitely, leading to poor fairness in resource allocation.</li></ul>
+        <li>Lack of Prioritization: SJF scheduling does not consider process priority or importance, solely focusing on job length. This can be a disadvantage in scenarios where certain critical processes need to be executed first, regardless of their length, potentially impacting system performance or user experience.</li>
+        <li>Dependency on Job Length Estimation: SJF scheduling relies on accurate estimation of job lengths. If the estimated lengths are inaccurate or unreliable, it can lead to inefficient scheduling decisions. Additionally, if there are frequent changes in job lengths, it becomes challenging to estimate accurately, potentially impacting overall scheduling effectiveness.</li>
+
+    </p>
+  </div>
+  <div  id="advdispriority" style="margin: 20px;border-radius: 20px; padding: 20px; background-color: whitesmoke; display: none;">
+    <h2><b>Advantages:</b></h2>    
+    <p>
+      <ul>
+      <li>Efficient Resource Allocation: Priority CPU scheduling allows for the assignment of different priorities to processes based on their importance or urgency. This enables the CPU to allocate resources to high-priority processes first, ensuring critical tasks are completed promptly.</li>
+      <li>Priority-based Execution: With priority scheduling, higher-priority processes are given preferential treatment, allowing them to execute before lower-priority processes. This can be beneficial in scenarios where certain tasks require immediate attention or have strict deadlines.</li>
+      <li>Flexibility in Process Management: Priority scheduling offers flexibility in managing processes. Priorities can be dynamically adjusted based on changing requirements or system conditions. This adaptability ensures that the most important tasks receive the necessary resources during critical periods.
+
+      </li>
+      </ul>
+    </p>
+  <br>
+  <h2><b>Disadvantages:</b></h2>    
+    <p>
+      <ul>
+      <li>Possibility of Starvation: If processes with lower priorities are continually overshadowed by higher-priority processes, they may suffer from starvation, resulting in delayed execution or even deadlock. In extreme cases, low-priority processes may never get a chance to execute, leading to unfair resource distribution.</li> 
+      <li>Lack of Fairness: Depending on the priority assignment, priority scheduling may not provide fair resource allocation. Processes with higher priorities can monopolize system resources, causing lower-priority processes to experience longer waiting times or decreased performance.</li>
+      <li>Risk of Priority Inversion: Priority inversion can occur when a low-priority process holds a resource that a high-priority process requires. In such cases, the high-priority process is forced to wait until the low-priority process releases the resource, causing delays and potential performance degradation. Priority inheritance or priority ceiling protocols can be implemented to mitigate this risk, but they add complexity to the scheduling algorithm.
+      </li>
+      </ul>
+    </p>
+  </div>
     <!-- <button style="background-color: #FCBA28;color: #000000;" id="explanation">Show Explanation</button> -->
   
 
