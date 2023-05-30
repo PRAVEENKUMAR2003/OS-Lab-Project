@@ -190,51 +190,72 @@ display: block;
           <p style="color:#FCBA28" class="lead">File allocation algorithms are used in operating systems to determine how files are stored on disk drives. These algorithms determine the most efficient way to allocate space for files, considering factors such as disk fragmentation, file size, and file access patterns.</p>
 </div>
 <div class="column1" style="background-color:#FCBA28">
-<h2 style="color:black">Contiguous Allocation</h2>
-<p style="color:black">In contiguous allocation, each file occupies a contiguous block of disk space.
+<h1 style="color:black">Contiguous Allocation</h1>
+<h5 style="color:black">In contiguous allocation, each file occupies a contiguous block of disk space.
 It is simple to implement and allows for fast sequential access to files.
-However, it suffers from external fragmentation, where free space becomes scattered across the disk, leading to inefficient space utilization.</p>
-<p> 
+However, it suffers from external fragmentation, where free space becomes scattered across the disk, leading to inefficient space utilization.</h5>
+<h5> 
   Advantages of Contiguous File Allocation:<br><br>
 
 Fast Sequential Access: Contiguous allocation enables fast sequential access to files. Since the blocks are stored consecutively on the disk, reading or writing data sequentially requires minimal disk head movement, reducing seek time and improving overall performance.
 
 Simplicity: Contiguous allocation is a simple and straightforward method of file storage. The file system only needs to maintain the starting block address and length of each file, making it relatively easy to implement.
-</p>
+</h5>
 <br>
-<p>
+<h5>
   Disadvantages of Contiguous File Allocation:<br><br>
 
 External Fragmentation: One of the major drawbacks of contiguous allocation is external fragmentation. As files are created, modified, and deleted, free blocks become scattered across the disk. This fragmentation results in inefficient use of disk space, as even if there is enough free space, it may not be contiguous, making it difficult to allocate contiguous blocks to new files.
 
 File Growth and Compaction: Contiguous allocation poses challenges when files need to grow in size. If there is no contiguous space available immediately after the existing blocks, the file must be moved to a new location with enough contiguous space. This process, known as compaction, can be time-consuming and requires a significant number of disk I/O operations.
-</p>
+</h5>
 </div>
 <div class="column1" style="background-color:#FCBA28">
-<h2 style="color:black">Linked Allocation</h2>
-<p style="color:black">In linked allocation, each file is represented as a linked list of blocks, where each block contains a pointer to the next block in the file.
+<h1 style="color:black">Linked Allocation</h1>
+<h5 style="color:black">In linked allocation, each file is represented as a linked list of blocks, where each block contains a pointer to the next block in the file.
 It eliminates external fragmentation because files can be stored in non-contiguous blocks.
-However, random access to a file becomes slower since the entire linked list needs to be traversed.</p><br>
-<p>
+However, random access to a file becomes slower since the entire linked list needs to be traversed.</h5><br>
+<h5>
   Advantages of Linked File Allocation:<br><br>
 
 Eliminates External Fragmentation: Linked allocation completely eliminates external fragmentation. Since files are stored as linked lists of blocks, they can be scattered across the disk without the need for contiguous space. This allows for efficient space utilization, as any available block can be used to store a file.
 
 Flexibility in File Size: Linked allocation is well-suited for systems with dynamic file sizes. Files can easily grow or shrink by adding or removing blocks from the linked list. There is no need for compaction or rearrangement of blocks when extending or reducing file sizes.
-</p><br>
-<p>
+</h5><br>
+<h5>
   Disadvantages of Linked File Allocation:<br><br>
 
 Increased Metadata Overhead: Linked allocation requires additional metadata compared to other allocation methods. Each block needs to store a pointer to the next block, increasing the storage overhead per block. This can be a significant factor when dealing with large numbers of small files, leading to higher disk space consumption for metadata.
 
 Slower Random Access: Random access to files stored using linked allocation can be slower compared to contiguous allocation. To access a specific block, the entire linked list must be traversed from the beginning. This overhead becomes more significant for large files or when multiple random accesses are required.
-</p>
+</h5>
 </div>
 
+<div class="column1" style="background-color:#FCBA28">
+  <h1 style="color:black">Indexed Allocation</h1>
+  <h5 style="color:black">a special block known as the Index block contains the pointers to all the blocks occupied by a file. Each file has its own index block. The ith entry in the index block contains the disk address of the ith file block. The directory entry contains the address of the index block </h5>
+  <h5> 
+    Advantages of Indexed File Allocation:<br><br>
+  
+    This supports direct access to the blocks occupied by the file and therefore provides fast access to the file blocks.
+    It overcomes the problem of external fragmentation.
+    
+  </h5>
+  <br>
+  <h5>
+    Disadvantages of Indexed File Allocation:<br><br>
+  
+    The pointer overhead for indexed allocation is greater than linked allocation.
+    For very small files, say files that expand only 2-3 blocks, the indexed allocation would keep one entire block (index block) for the pointers which is inefficient in terms of memory utilization. However, in linked allocation we lose the space of only 1 pointer per block.
+  </h5>
+  </div>
+
 <div class="mayur" >
-<a href="contiguous.html">CONTIGUOUS ALLOCATION   </a>
+ <a href="contiguous.html">CONTIGUOUS ALLOCATION   </a>
 <br>
 <a href="linked.html">LINKED ALLOCATION</a>
+<br>
+<a href="indexed.html">INDEXED ALLOCATION</a>
 
 </div>
 
