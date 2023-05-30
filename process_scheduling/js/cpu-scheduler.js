@@ -688,24 +688,44 @@ $(document).ready(function () {
 
 			if (algorithm == "FCFS") {
 				$("#algorithm_explanation").text("First Come First Served will execute proccesses in the order in which they arrived");
+				document.getElementById("advdisroundrobin").style.display = "none";
+				document.getElementById("advdisfcfs").style.display = "block";
+				document.getElementById("advdissjf").style.display = "none";
+				document.getElementById("advdispriority").style.display = "none";
+
 				FCFS();
 				processTotal = processArray;
 			}
 
 			else if (algorithm == "SJF") {
 				$("#algorithm_explanation").text("Shortest Job First will execute proccesses from smallest to biggest");
+				document.getElementById("advdisroundrobin").style.display = "none";
+				document.getElementById("advdisfcfs").style.display = "none";
+				document.getElementById("advdissjf").style.display = "block";
+				document.getElementById("advdispriority").style.display = "none";
+
 				SJF();
 				processTotal = processArray;
 			}
 
 			else if (algorithm == "SRJF") {
 				SRJF();
+				document.getElementById("advdisroundrobin").style.display = "none";
+				document.getElementById("advdisfcfs").style.display = "none";
+				document.getElementById("advdissjf").style.display = "none";
+				document.getElementById("advdispriority").style.display = "none";
+
 				$("#algorithm_explanation").text("Shortest Remaining Job First will execute proccesses from smallest to biggest. If a new proccess arrives that is smaller than the currently running proccess, it will interrupt it.");
 				processTotal = processArray;
 			}
 
 			else if (algorithm == "Round Robin") {
 				$("#algorithm_explanation").text("Round Robin will execute each proccess for the duration of the time quantum. It will then move on to the next proccess. ");
+				document.getElementById("advdisroundrobin").style.display = "block";
+				document.getElementById("advdisfcfs").style.display = "none";
+				document.getElementById("advdissjf").style.display = "none";
+				document.getElementById("advdispriority").style.display = "none";
+
 				roundRobin();
 				processTotal = processArray;
 				tq = timeQuantum;
@@ -716,6 +736,11 @@ $(document).ready(function () {
 			if (algorithm == "Priority") {
 				$(".priority").collapse("show");
 				$("#algorithm_explanation").text("Priority Scheduling will execute each process according to the assigned priority. In this case a lower priority number is better.");
+				document.getElementById("advdisroundrobin").style.display = "none";
+				document.getElementById("advdisfcfs").style.display = "none";
+				document.getElementById("advdissjf").style.display = "none";
+				document.getElementById("advdispriority").style.display = "block";
+
 				priority();
 				processTotal = processArray;
 			}
