@@ -2,11 +2,6 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <style>
-    body{
-      color: #FCBA28;
-    }
-   </style>
 </head>
 <body>
   <nav>
@@ -14,17 +9,18 @@
         <ul>
             <li><button class="button button1">Home</button></li>
             <li class="dropdown"><button class="button button1 dropbtn">Algorithms</button>
-              <div class="dropdown-content">
-                  <a href="../process_scheduling/process.html">Process Scheduling</a>
-                  <a href="../process_sync\home.html">Process Synchronization</a>
-                  <a href="../Bankers/bankers.html">Bankers Algorithm</a>
-                  <a href="../mft_mvt/Fit.html">Fit Algorithms</a>
-                  <a href="../Page_Replacement Algo/page replacement_home.html">Page Replacement Algorithm</a>
-                  <a href="../Disk/disk.html">Disk Scheduling</a>
-                  <a href="../file allocation/file.html">File Allocation</a>
-                  <a href="../mft_mvt\MVFT.html">MFT and MVT</a>
-              </div>
-          </li>
+                <div class="dropdown-content">
+                    <a href="../process_scheduling/process.html">Process Scheduling</a>
+                    <a href="../process_sync\home.html">Process Synchronization</a>
+					<a href="../Bankers/bankers.html">Bankers Algorithm</a>
+                    <a href="../mft_mvt/Fit.html">Fit Algorithms</a>
+                    
+                    <a href="../Page_Replacement Algo/page replacement_home.html">Paging and Page Replacement Algorithm</a>
+                    <a href="../Disk/disk.html">Disk Scheduling</a>
+                    <a href="../file allocation/file.html">File Allocation</a>
+                    <a href="../mft_mvt\MVFT.html">MFT and MVT</a>
+                    </div>
+            </li>
             <li><button class="button button1">About</button></li>
             <li><button class="button button1">References</button></li>
         </ul>   
@@ -115,7 +111,7 @@
           memoryBlocks[allocatedBlockIndex].element = remainingBlockElement;
         }
 
-        allocationLog.innerHTML += "<p>Process of size " + processSize + " and the remaining size of block is " + memoryBlocks[allocatedBlockIndex].size + "</p>";
+        allocationLog.innerHTML += "<p>Process of size " + processSize + " and the allotted block is " + allocatedBlockIndex + "</p>";
       } else {
         allocationLog.innerHTML += "<p>No available block found to allocate process of size " + processSize + "</p>";
       }

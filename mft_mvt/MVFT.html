@@ -2,11 +2,6 @@
 <html>
 <head>
  <link rel="stylesheet" type="text/css" href="style.css">
- <style>
-	body{
-		color: #FCBA28;
-	}
- </style>
 </head>
 <body>
 
@@ -18,13 +13,14 @@
                 <div class="dropdown-content">
                     <a href="../process_scheduling/process.html">Process Scheduling</a>
                     <a href="../process_sync\home.html">Process Synchronization</a>
-                    <a href="../Bankers/bankers.html">Bankers Algorithm</a>
+					<a href="../Bankers/bankers.html">Bankers Algorithm</a>
                     <a href="../mft_mvt/Fit.html">Fit Algorithms</a>
-                    <a href="../Page_Replacement Algo/page replacement_home.html">Page Replacement Algorithm</a>
+                    
+                    <a href="../Page_Replacement Algo/page replacement_home.html">Paging and Page Replacement Algorithm</a>
                     <a href="../Disk/disk.html">Disk Scheduling</a>
                     <a href="../file allocation/file.html">File Allocation</a>
                     <a href="../mft_mvt\MVFT.html">MFT and MVT</a>
-                </div>
+                    </div>
             </li>
             <li><button class="button button1">About</button></li>
             <li><button class="button button1">References</button></li>
@@ -36,7 +32,7 @@
 	</nav>
 	</nav>
 	
-	<h2>MFT</h2>
+	<h3 class="heading">MFT(Multiprogramming with Fixed number of Tasks)</h3>
 	In MFT, the main memory is divided into fixed-sized partitions or fixed task 
 	areas, with each partition reserved for a specific task or program. 
 	These partitions are assigned to programs before execution and do not change 
@@ -45,19 +41,24 @@
 	isolated within their respective partitions.
 	It also avoids external fragmentation since partitions do not change size.
 	<p>
-	 <a href="MFT.html" style="color:#f9f4da;">Simulate MFT</a>
+	<br>
+	<button class="button1">
+	 <a href="MFT.html">Simulate MFT</a></button>
 	 </p>
 	 <br>
 	 <p>
-	<h2>MVT</h2>
+	<h3 class="heading">MVT(Multiprogramming with Variable number of Tasks)</h3>
 	In MVT, the main memory is divided into variable-sized partitions to accommodate 
 	different programs or tasks. Each program is allocated memory based on its requirements. When a new program arrives, the operating system searches for a large enough partition to accommodate it. If a suitable partition is found, the program is loaded into that partition. MVT allows efficient memory utilization as partitions can be 
 	adjusted dynamically based on the requirements of incoming programs.
 	However, it can lead to external fragmentation since free memory blocks 
 	may be scattered throughout the memory.
 	</p>
+	<br>
 	<p>
-	 <a href="MVT.html" style="color:#f9f4da;">Simulate MvT</a>
+	<button class="button1">
+	 <a href="MVT.html">Simulate MvT</a>
+	 </button>
 	</p>
 
 </body>

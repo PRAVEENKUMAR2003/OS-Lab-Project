@@ -12,9 +12,13 @@ body, html {
     height:98%;
 }
 body {
+	color: #FCBA28;
 	background-color: #0f0d0e;
 	font-family: 'Outfit', sans-serif;
   font-size: x-large;
+}
+.heading {
+	color: #f9f4da;
 }
 .button {
     background-color: #FCBA28; /* Green */
@@ -41,6 +45,7 @@ body {
    background-color: #FCBA28;
    color: #0f0d0e;
 }
+
 nav {
 	background-color: #0f0d0e;
 	height: 90px;
@@ -91,7 +96,9 @@ a {
 }
 
 
-
+a:hover {
+	color: #0f0d0e;
+}
 
 
 
